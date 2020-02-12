@@ -1,4 +1,4 @@
-﻿ADVANCE LINUX
+ADVANCE LINUX
 Ques 1:- What is the size of MBR and what does it contains
 Ans 1:- Size of an MBR is 512 bytes & it contains the information of the first sector of the hard disk where the operating system is located and access ram.It also contains master partition table.
 Ques 2:- In which file you can write commands which you want to run whenever Linux system starts/restarts?.
