@@ -1,0 +1,229 @@
+﻿ADVANCE LINUX
+Ques 1:- What is the size of MBR and what does it contains
+Ans 1:- Size of an MBR is 512 bytes & it contains the information of the first sector of the hard disk where the operating system is located and access ram.It also contains master partition table.
+Ques 2:- In which file you can write commands which you want to run whenever Linux system starts/restarts?.
+Ans 2:- .profile
+Ques 3:- Reboot the system using runlevel.
+Ans 3:- init 6 runlevel is use to restart the system
+
+
+Runlevels define what tasks can be accomplished in the current state (or runlevel) of a Linux system
+* 0- Halt
+* 1- Single user mode (recovery)
+* 2- Debian/Ubuntu default
+* 3- RHEL/Fedora/SUSE text mode
+* 4- free
+* 5- RHEL/Fedora/SUSE graphical mode
+* 6- reboot
+
+
+Ques 4:- Restart cron service.
+Ans :-   
+Ques 5:- Create an ext4 filesystem
+Ans :- First we have to create a partition by sudo fdisk /dev/sda
+  
+
+Now we have to list all the partition by pressing p
+  
+
+
+
+
+
+Now to write and exit type w 
+To create a file system of ext4 we have to type command mkfs.ext4 <partition name>
+  
+
+Ques 6:- Mount the created filesystem on /partition directory.
+Ans 6:- First we have to make a directory in /mnt folder by sudo mkdir /mnt/fahad
+  
+
+Then we have to run mount command like mount /dev/sda4 /mnt/fahad
+We can check the mount by mount | grep fahad
+  
+
+Ques 7. Difference between LVM and RAID.
+Ans 7. 
+   
+
+
+Ques 8:- Create a LVM
+Ans 8:- To create a Logical Volume first we have to make a physical volume by
+sudo pvcreate /dev/sda4 to see the volume sudo pvdisplay
+  
+
+Then we have to create the volume group by 
+sudo vgcreate vol_grp1 /dev/sda4
+  
+
+Then we have to create the Logical volume by
+sudo lvcreate -l 20 -n logical_vol1 vol_grp1
+To see the Logical volume we have to run command 
+sudo lvdisplay
+  
+
+
+
+
+
+
+
+
+
+Ques 10:- Create a swapfile of 500Mb
+Ans 10:- 
+  
+
+Ques 11:- Set setuid and setgid on two different file
+Ans 11:-  To setuid run command sudo chmod u+s fahad.txt
+  
+
+To setgid run command sudo chmod g+s fahad1.txt
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ques 12:-What is the use of Sticky bit.
+Ans 12:-Sticky bit is used on directories where each user have write permissions but only on their files, not on others.
+
+
+An example of sticky bit is /tmp where each user can write its data but cannot write other user’s files.
+  
+
+Ques 13:- Create a user and add it to one secondary group
+Ans 13:- first we have to create a user with sudo adduser newuser 
+  
+
+Here we can see that the user is added to newuser group 
+By usermod -G <secondary group> <username> it will add the secondary group to the user
+  
+
+Ques 14:- Lock this user.
+Ans 14:- sudo usermod -L newsuser  now if we have to check the status of the user we type sudo passwd --status newuser
+  
+
+Ques 15:- Give this user full access (without password). 
+Ans 15:-  By specifying the user in to the sudoers file we and setting all permission to ALL we can give full access to user
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ques 16:-Delete the create user after taking backup of it home directory.
+Ans 16:- By using deluser --remove -home --backup -to /tmp/userbackup newuser its backup is being stored in the /tmp/userbackup/newuser.tar file.
+  
+
+
+
+
+
+Ques 17:- Create a file with some content. Change all lower case letter to upper case letter and save output to another file using redirections.
+Ans 17:- tr command is use to convert the text 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Ques 18:- Set nice value of a process to -1.
+Ans :- first we have to list the processes with the top command
+  
+
+Run command 
+Renice -n -1 -p 2227 -u fahad it will change the nice value to -1
+  
+
+
+
+
+
+Ques 19:-Get list of all files used by “telnet”.
+Ques 20:- Check if port 22 is listening using netstat and telnet command.
+
+
+Ans 20:-<USING TELNET>  telnet <host IP> <port no.> if the port is down it won’t allow to connect
+
+
+  
+
+
+
+
+
+<USING NETSTAT> sudo netsat -plnt | grep 22 it tells wether the port is listening or not
+  
+
+
+
+
+
+
+
+
+
+Ques 21:- Create a cron job which runs once in a week at 23:45.
+Ans  21:- crontab -u fahad -e for creating the crontab
+  
+
+Ques 22:- Difference between dig and traceroute
+Ans 22:- Dig is a DNS lookup utility. It performs DNS lookups and displays the answers that are returned from the name servers that were queried.
+  
+
+
+
+Traceroute  tracks the route packets taken from an IP network on their way to a given host. It utilizes the IP protocol's time to live (TTL) field and  attempts  to  elicit  an  ICMP  TIME_EXCEEDEDresponse from each gateway along the path to the host.
